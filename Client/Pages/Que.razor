@@ -1,18 +1,77 @@
 ﻿
 <PageTitle>Eat in online queue</PageTitle>
 <h3>Online queue</h3>
-<p role="status">Estimated wait: @estimatedWait</p>
-<button class="btn btn-primary" @onclick="JoinQue">Join que</button>
+<p role="status">Estimated wait: @User1.estimatedWait</p>
+<button class="btn btn-primary"  @onclick="JoinQue">Join que</button>
+<button class="btn btn-secondary" hidden="@(!ShowButton)" @onclick="JoinQue2">1-2 People</button>
+<button class="btn btn-secondary" hidden="@(!ShowButton)" @onclick="JoinQue4">3+ People</button>
 <button class="btn btn-primary"  @onclick="HowWorksQue">How it works?</button>
+<button class="btn btn-primary" @onclick="OrderTakeout">Order Takeout</button>
 @code {
-	private int estimatedWait;
-	private int quePlace;
-	public void JoinQue()
-	{	
+	@inject NavigationManager NavManager
+	public bool ShowButton { get; set; } = false;
 
+	public static class Queue
+	{
+		
+		public static int queAmount2 { set; get; } = 0;
+		public static int queAmount4 { set; get; } = 0;
+	}
+
+	public class User
+	{
+		private double _estimatedWait = 0;
+		private int _quePlace = 0;
+		public double estimatedWait {
+			set { _estimatedWait = value; }
+			// setter not used 
+			get {
+				// formula is , Place in que * avg time spent by a table / number of tables
+				return _estimatedWait = (group == true) ? _quePlace * 38.22 / 24 : _quePlace * 38.22 / 15;
+			}
+		}
+		
+		public int quePlace { 
+			set { _quePlace = value; }
+			get { return _quePlace; }
+		}
+		public bool group { 
+			set; 
+			get; }
+
+	}
+	User User1 = new User();
+
+
+
+
+
+	private void JoinQue2()
+	{
+		User1.quePlace = 12;
+		User1.group = false;
+		ShowButton = false;
+		// add entry to que2
+		//display estimated time
+	}
+	private void JoinQue4()
+	{
+		User1.quePlace = 12;
+		User1.group = true;
+		ShowButton = false;
+		// add entry to que2
+		//display estimated time
+	}
+	public void JoinQue()
+	{
+		ShowButton = true;
 	}
 	private void HowWorksQue()
 	{
-		
+		//Navigate to "HowWorksQue.razor"
+	}
+	private void OrderTakeout()
+	{
+		// navigate to OrderTakeout.razor
 	}
 }
