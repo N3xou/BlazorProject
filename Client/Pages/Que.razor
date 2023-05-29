@@ -1,12 +1,25 @@
 ﻿
 <PageTitle>Eat in online queue</PageTitle>
-<h3>Online queue</h3>
-<p role="status">Estimated wait: @User1.estimatedWait</p>
-<button class="btn btn-primary"  @onclick="JoinQue">Join que</button>
-<button class="btn btn-secondary" hidden="@(!ShowButton)" @onclick="JoinQue2">1-2 People</button>
-<button class="btn btn-secondary" hidden="@(!ShowButton)" @onclick="JoinQue4">3+ People</button>
-<button class="btn btn-primary"  @onclick="HowWorksQue">How it works?</button>
-<button class="btn btn-primary" @onclick="OrderTakeout">Order Takeout</button>
+<div >
+
+	<center>
+		<h3>Online queue</h3>
+		Estimated wait: @User1.estimatedWait min
+		<br />
+		Your position in Que: @User1.quePlace
+	</center>
+	<div class="button-group">
+		<button class="btn btn-primary" @onclick="JoinQue">Join que</button>
+
+		<div class="button-group-horizontal">
+		<button class="btn btn-secondary" hidden="@(!ShowButton)" @onclick="JoinQue2">1-2 People</button>
+		<button class="btn btn-secondary" hidden="@(!ShowButton)" @onclick="JoinQue4">3+ People</button>
+		</div>
+		<button class="btn btn-primary" @onclick="HowWorksQue">How it works?</button>
+	</div>
+</div>
+
+
 @code {
 	@inject NavigationManager NavManager
 	public bool ShowButton { get; set; } = false;
@@ -68,10 +81,13 @@
 	}
 	private void HowWorksQue()
 	{
-		//Navigate to "HowWorksQue.razor"
+		NavManager.NavigateTo("/HowItWorks.razor");
 	}
-	private void OrderTakeout()
-	{
-		// navigate to OrderTakeout.razor
-	}
+	// todo 
+	// give each user cookie with an ID
+	// create a database that will store the users Que position by user ID
+	// once someone leaves the que update the que positions in the database
+	// display the que position to an user once he returns
+	// 
+	// when the que timer is less than 5 mins give a warning
 }

@@ -13,14 +13,28 @@ a, .btn-link {
 }
 
 .btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background: rgb(10,0,190);
+    background: radial-gradient(circle, rgba(10,0,190,1) 0%, rgba(18,18,222,1) 35%, rgba(0,175,210,1) 100%);
+    border-radius: 10px;
+    color: white;
+    font-size: 150%;
+    border-style: dotted;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    height:100px;
 }
 .btn-secondary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    height:50px;
+    align-self:center;
+    width:50%;
+    background: rgb(10,0,190);
+    background: radial-gradient(circle, rgba(10,0,190,1) 0%, rgba(18,18,222,1) 35%, rgba(0,175,210,1) 100%);
+    border-radius: 10px;
+    color: white;
+    font-size: 100%;
+    border-style: dotted;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -104,3 +118,36 @@ a, .btn-link {
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
+
+.container {
+    display:flex;
+}
+.container > *{
+    flex:1;
+    width:50%;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+.button-group-horizontal{
+    display:flex;
+    flex-direction: row;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+#OrderButton {
+    width: 50%;
+    height: 200px;
+    align-self: center;
+    background: rgb(10,0,190);
+    background: radial-gradient(circle, rgba(10,0,190,1) 0%, rgba(18,18,222,1) 35%, rgba(0,175,210,1) 100%);
+    border-radius: 30px;
+    color: white;
+    font-size: 250%;
+    border-style: dotted;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+}
