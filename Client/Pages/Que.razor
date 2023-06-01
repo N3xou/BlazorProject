@@ -21,9 +21,10 @@
 
 
 @code {
+	
+
 	@inject NavigationManager NavManager
 	public bool ShowButton { get; set; } = false;
-
 	public static class Queue
 	{
 		
@@ -64,7 +65,8 @@
 		User1.quePlace = 12;
 		User1.group = false;
 		ShowButton = false;
-		queueDict.Add(1, 1);
+		
+		//QueueService.queue.Enqueue();
 		// add entry to que2
 		//display estimated time
 	}
